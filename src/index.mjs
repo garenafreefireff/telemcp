@@ -411,8 +411,9 @@ async function readJsonBody(request) {
 }
 
 function startHttpServer() {
-  const port = Number(process.env.MCP_PORT || 3000);
-  const host = process.env.MCP_HOST || '127.0.0.1';
+  const port = Number(process.env.PORT || process.env.MCP_PORT || 3000);
+  const defaultHost = process.env.RENDER === 'true' ? '0.0.0.0' : '127.0.0.1';
+  const host = process.env.MCP_HOST || defaultHost;
   const server = createServer(async (request, response) => {
     if (request.url === '/' && request.method === 'GET') {
       response.writeHead(200, { 'content-type': 'text/plain; charset=utf-8' });

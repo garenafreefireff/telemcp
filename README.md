@@ -57,6 +57,14 @@ This endpoint has no authentication as requested. While the tunnel is running, a
 
 The bot must have permission to send messages to the selected chat. The server sends only when the MCP client calls this tool.
 
+## Deploy on Render
+
+Create a Render **Web Service** from the GitHub repository. Use `npm install` as the build command and `npm start` as the start command. The start script runs HTTP mode, listens on Render's `PORT`, and binds to `0.0.0.0` when the `RENDER` environment variable is set.
+
+Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` under the service's Environment settings. Do not commit `.env`. Set the health check path to `/`; the server returns HTTP 200 there. The MCP endpoint is `https://<your-render-service>.onrender.com/mcp`.
+
+For local Codex stdio, keep using the direct `node src/index.mjs` command in the MCP configuration, or run `npm run start:stdio` from a terminal.
+
 ## Media
 
 `send_telegram_media` supports photos, videos, documents, audio, voice notes, animations, stickers, and video notes. It accepts either:

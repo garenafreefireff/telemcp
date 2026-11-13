@@ -1,6 +1,6 @@
 {
   "name": "telegram-send-mcp",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "description": "A small stdio MCP server for sending Telegram messages",
   "type": "module",
@@ -8,7 +8,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "start": "node src/index.mjs",
+    "start": "node src/index.mjs --http",
+    "start:stdio": "node src/index.mjs",
     "start:http": "node src/index.mjs --http"
   }
 }
